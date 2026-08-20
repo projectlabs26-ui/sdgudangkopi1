@@ -27,7 +27,7 @@ export default function AbsenPage() {
   const supabase = createClient();
   const [user, setUser] = useState<{ id: string; email: string } | null>(null);
   const [profile, setProfile] = useState<{ full_name: string; role: string } | null>(null);
-  const [todayData, setTodayData] = useState<{ id: string; clock_in: string | null; clock_out: string | null; [key: string]: unknown } | null>(null);
+  const [todayData, setTodayData] = useState<{ id: string; clock_in: string | null; clock_out: string | null; status: string; note: string | null; proof_image_url: string | null } | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [absenType, setAbsenType] = useState<"clock_in" | "clock_out">("clock_in");
@@ -235,11 +235,11 @@ export default function AbsenPage() {
                 {todayData.status === "sakit" ? "Sakit" : "Izin"}
               </p>
               {todayData.note && (
-                <p className="text-sm text-gray-500 mt-1">"{todayData.note as string}"</p>
+                <p className="text-sm text-gray-500 mt-1">"{todayData.note}"</p>
               )}
               {todayData.proof_image_url && (
                 <a
-                  href={todayData.proof_image_url as string}
+                  href={todayData.proof_image_url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block mt-2 text-xs text-primary-500 hover:underline"
