@@ -281,7 +281,7 @@
 
 | # | Issue | Prioritas | Status |
 |---|-------|-----------|--------|
-| 1 | **Migration 002 & 003 belum dijalankan** di Supabase SQL Editor | 🔴 HIGH | ❌ |
+| 1 | Migration 002 & 003 belum dijalankan di Supabase SQL Editor | 🔴 HIGH | ✅ Done |
 | 2 | Hero.tsx mungkin masih pakai hardcoded values, bukan dari DB | 🟡 MED | ❓ |
 | 3 | Build error `/absen/success` — sudah difix (Suspense wrapper), perlu test ulang | 🟡 MED | ✅ |
 | 4 | PWA hanya aktif di production, perlu test build production | 🟡 MED | ❌ |
@@ -295,7 +295,7 @@
 ### Pre-deployment
 
 - [x] Environment variables ready
-- [ ] SQL migrations complete — **002_fix_rls_policies.sql & 003_add_proof_image.sql BELUM dijalankan di Supabase SQL Editor**
+- [x] SQL migrations complete — **002 & 003 sudah dijalankan** ✅
 - [x] RLS policies configured
 - [x] Storage buckets created
 
