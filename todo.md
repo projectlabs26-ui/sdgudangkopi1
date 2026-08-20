@@ -92,7 +92,7 @@
 - [x] Mobile-first approach (Tailwind responsive classes)
 - [x] Tablet breakpoint
 - [x] Desktop breakpoint
-- [ ] Test semua halaman (real device)
+- [ ] Test semua halaman (real device) — **sebagian sudah, perlu test final**
 
 ---
 
@@ -272,6 +272,21 @@
 - [ ] Test install di Android
 - [ ] Test install di iOS
 - [ ] Test offline mode
+- [ ] **Test ulang build setelah migration 002 & 003 dijalankan**
+- [ ] **Pastikan semua halaman tidak error di production**
+
+---
+
+## ⚠️ Known Issues / Perlu Revisi
+
+| # | Issue | Prioritas | Status |
+|---|-------|-----------|--------|
+| 1 | **Migration 002 & 003 belum dijalankan** di Supabase SQL Editor | 🔴 HIGH | ❌ |
+| 2 | Hero.tsx mungkin masih pakai hardcoded values, bukan dari DB | 🟡 MED | ❓ |
+| 3 | Build error `/absen/success` — sudah difix (Suspense wrapper), perlu test ulang | 🟡 MED | ✅ |
+| 4 | PWA hanya aktif di production, perlu test build production | 🟡 MED | ❌ |
+| 5 | Test real device: GPS, kamera, selfie, install PWA | 🟡 MED | ❌ |
+| 6 | Custom domain `sdgudangkopi1.my.id` belum dikonfigurasi | 🟢 LOW | ❌ |
 
 ---
 
@@ -279,18 +294,36 @@
 
 ### Pre-deployment
 
-- [ ] Environment variables ready
-- [ ] SQL migrations complete (jalankan di Supabase SQL Editor)
-- [ ] RLS policies configured
-- [ ] Storage buckets created
+- [x] Environment variables ready
+- [ ] SQL migrations complete — **002_fix_rls_policies.sql & 003_add_proof_image.sql BELUM dijalankan di Supabase SQL Editor**
+- [x] RLS policies configured
+- [x] Storage buckets created
 
 ### Deploy
 
-- [ ] Push to GitHub
-- [ ] Connect Vercel
-- [ ] Set environment variables di Vercel
-- [ ] Configure custom domain
+- [x] Push to GitHub
+- [x] Connect Vercel
+- [x] Set environment variables di Vercel
+- [ ] Configure custom domain (sdgudangkopi1.my.id)
 - [ ] Test production build
+
+### Git & Vercel Info
+
+| Item | Value |
+|------|-------|
+| **GitHub Repo** | `https://github.com/projectlabs26-ui/sdgudangkopi1` |
+| **GitHub Owner** | `projectlabs26-ui` (⚠️ BUKAN sugihmakmur26-oss) |
+| **Vercel Project** | `https://vercel.com/project-labs/sdgudangkopi1` |
+| **App URL** | `https://sdgudangkopi1.vercel.app` |
+| **Supabase** | `https://kcevytueojcfphckcwmu.supabase.co` |
+
+### Vercel Environment Variables
+
+| Key | Value |
+|-----|-------|
+| `NEXT_PUBLIC_SUPABASE_URL` | `https://kcevytueojcfphckcwmu.supabase.co` |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtjZXZ5dHVlb2pjZnBoY2tjd211Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODcxMTQzOTQsImV4cCI6MjEwMjY5MDM5NH0.cbsK1V4fDuRa0ayQZgYrzfvSf5a2tsy2ADZQHnq4ll4` |
+| `NEXT_PUBLIC_APP_URL` | `https://sdgudangkopi1.vercel.app` |
 
 ### Post-deployment
 
@@ -381,4 +414,4 @@
 | 19 Agustus 2026 | Konfigurasi PWA: next-pwa, service worker, runtime caching, offline support |
 | 19 Agustus 2026 | **Sesi lanjutan:** Buat /auth/callback route, generate icon PWA (192, 512) dari logo, rewrite useCamera hook, buat /absen/scan & /absen/success, fix next.config.mjs (PWA caching), tambah kolom kepsek_photo_url & kepsek_welcome ke migration, hapus .next cache, install sharp, verifikasi seluruh halaman 200 OK |
 | 19 Agustus 2026 | **Sesi sore:** Cek koneksi Supabase, fix role admin (kepala_sekolah→admin), buat teacher record untuk Sima Aulia, fix RLS policies (002_fix_rls_policies.sql: tambah policy INSERT/UPDATE/DELETE untuk admin di teachers, users, classes, students, teacher_classes, attendances) |
-| 19 Agustus 2026 | **Sesi malam:** Fitur self-report sakit/izin + upload bukti gambar (003_add_proof_image.sql, /api/attendance/report, tombol Sakit & Izin di /absen), perbaikan geolocation (fetch koordinat dari DB di /absen & /absen/scan, validasi backend di /api/attendance), tambah Logo + Banner + Sejarah di /admin/config, bersihkan file temporary |
+| 20 Agustus 2026 | **Sesi deploy:** Git init, commit initial (68 files), push ke GitHub (`projectlabs26-ui/sdgudangkopi1` — ⚠️ bukan sugihmakmur26-oss!), Vercel login + deploy, fix type error `todayData.note` (unknown→string), fix Suspense boundary di `/absen/success`, buat Panduan Penggunaan PDF (603KB), update todo.md |
