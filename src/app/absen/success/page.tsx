@@ -1,12 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { CheckCircle, Clock, MapPin, Calendar, ArrowLeft, Home } from "lucide-react";
+import { CheckCircle, Clock, MapPin, Calendar, ArrowLeft, Home, Loader2 } from "lucide-react";
 import Link from "next/link";
 
 export default function AbsenSuccessPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-primary-500" />
+      </div>
+    }>
+      <AbsenSuccessContent />
+    </Suspense>
+  );
+}
+
+function AbsenSuccessContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const type = searchParams.get("type") || "clock_in";
